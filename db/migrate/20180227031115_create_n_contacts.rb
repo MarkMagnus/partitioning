@@ -3,10 +3,10 @@ class CreateNContacts < ActiveRecord::Migration
     create_table :n_contacts do |t|
       t.integer :type
       t.references :account
-      t.jsonb :fields
 
       t.timestamps
     end
+    add_column :n_contacts, :fields, :jsonb
     add_index :n_contacts, :account_id
   end
 end

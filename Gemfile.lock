@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/drock/activerecord-postgres-json.git
+  revision: 83c019d0ada15b8f10c583aeef803cba81390bdf
+  specs:
+    activerecord-postgres-json (0.1.2)
+      activerecord (>= 3.2, < 4)
+      hashie
+      multi_json
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -22,8 +31,6 @@ GEM
       activesupport (= 3.2.22)
       arel (~> 3.0.2)
       tzinfo (~> 0.3.29)
-    activerecord-postgresql-adapter (0.0.1)
-      pg
     activeresource (3.2.22)
       activemodel (= 3.2.22)
       activesupport (= 3.2.22)
@@ -43,6 +50,7 @@ GEM
     erubis (2.7.0)
     execjs (2.7.0)
     ffi (1.9.23)
+    hashie (3.5.7)
     hike (1.2.3)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
@@ -113,10 +121,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord-postgresql-adapter (= 0.0.1)
+  activerecord-postgres-json (~> 0.1.2)!
   coffee-rails (~> 3.2.1)
   jquery-rails
-  pg (~> 0.11)
+  pg
   rails (= 3.2.22)
   sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)

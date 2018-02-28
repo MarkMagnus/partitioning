@@ -3,10 +3,10 @@ class CreatePContacts < ActiveRecord::Migration
     create_table :p_contacts do |t|
       t.integer :type
       t.references :account
-      t.jsonb :fields
 
       t.timestamps
     end
+    add_column :p_contacts, :fields, :jsonb
     add_index :p_contacts, :account_id
   end
 end
