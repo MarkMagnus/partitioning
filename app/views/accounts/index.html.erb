@@ -1,0 +1,14 @@
+<h1>Account#index</h1>
+<table>
+  <tbody>
+  <tr><th>#</th><th>name</th><th>contact #</th><th></th></tr>
+<% @accounts.each do |account| %>
+  <tr>
+    <td><%= account.id %></td>
+    <td><%= account.name %></td>
+    <td><%= number_of_contacts(account.id) %></td>
+    <td><%= link_to 'contacts', account_contacts_path(account.id) %></td>
+  </tr>
+<% end %>
+  </tbody>
+</table>

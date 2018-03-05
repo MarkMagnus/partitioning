@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+
+<ul>
+  <li>Account Id: <%= @account.id %></li>
+  <li>Account Name: <%= @account.name %></li>
+  <li>Contact Type: <%= @contact.contact_type %></li>
+  <li>Contact Name: <%= @contact.fields['name']  %></li>
+  <li>Contact Email: <%= @contact.fields["email"] %></li>
+</ul>
+
+<%= link_to 'Edit', edit_account_contact_path(@account.id, @contact) %> |
+<%= link_to 'Back', account_contacts_path(@account.id) %>

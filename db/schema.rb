@@ -19,10 +19,4 @@ ActiveRecord::Schema.define(:version => 20180227031115) do
     t.datetime "updated_at", :null => false
   end
 
-# Could not dump table "n_contacts" because of following StandardError
-#   Unknown type 'jsonb' for column 'fields'
-
-# Could not dump table "p_contacts" because of following StandardError
-#   Unknown type 'jsonb' for column 'fields'
-
 end

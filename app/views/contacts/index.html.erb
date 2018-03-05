@@ -1,0 +1,24 @@
+<h1><%= @account.name %> Listing contacts</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @contacts.each do |contact| %>
+  <tr>
+    <td><%= contact.contact_type %></td>
+    <td><%= contact.fields["name"] %></td>
+    <td><%= contact.fields["email"] %></td>
+    <td><%= link_to 'Show', account_contact_path(@account.id, contact.id) %></td>
+    <td><%= link_to 'Edit', edit_account_contact_path(@account.id, contact.id) %></td>
+    <td><%= link_to 'Destroy', account_contact_path(@account.id, contact.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Contact', new_account_contact_path(@account) %>

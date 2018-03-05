@@ -1,4 +1,4 @@
-class AccountController < ApplicationController
+class AccountsController < ApplicationController
   def new
   end
 
@@ -18,5 +18,6 @@ class AccountController < ApplicationController
   end
 
   def index
+    @accounts = Account.all
   end
 end

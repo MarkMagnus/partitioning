@@ -1,8 +1,7 @@
 Partitioning::Application.routes.draw do
 
-  resources :account do
-    resources :n_contact
-    resources :p_contact
+  resources :accounts do
+    resources :contacts
   end
 
   root :to => 'home#index'
