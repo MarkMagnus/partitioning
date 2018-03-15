@@ -1,4 +1,4 @@
-class Contact < ActiveRecord::Base
+class NContact < ActiveRecord::Base
   belongs_to :accounts
   attr_accessible :fields, :contact_type
 

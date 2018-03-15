@@ -1,4 +1,4 @@
-namespace :contacts do
+namespace :n_contacts do
 
   desc "run"
   task :run, [:n] => :environment do |t, args|
@@ -13,7 +13,6 @@ namespace :contacts do
     Rake::Task["search_per_account"].invoke
     Rake::Task["search_all_accounts"].invoke
     Rake::Task["delete"].invoke
-
   end
 
   desc "purge"
@@ -22,7 +21,7 @@ namespace :contacts do
 
     start = Time.now
 
-    Contact.delete_all
+    NContact.delete_all
 
     finish = Time.now
 
@@ -83,7 +82,7 @@ namespace :contacts do
     start = Time.now
 
     accounts.each do |account|
-      account.contacts.count
+      account.n_contacts.count
     end
 
     finish = Time.now
@@ -103,7 +102,7 @@ namespace :contacts do
       type = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].sample
       name = Faker::Name.name
       email = Faker::Internet.email(name)
-      account.contacts.where("fields->>'name' like ?", name)
+      account.n_contacts.where("fields->>'name' like ?", name)
           .where("fields->>'email' like ?", email)
           .where("contact_type = ?", type)
     end
@@ -123,7 +122,7 @@ namespace :contacts do
       type = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].sample
       name = Faker::Name.name
       email = Faker::Internet.email(name)
-      Contact.where("fields->>'name' like ?", name)
+      NContact.where("fields->>'name' like ?", name)
           .where("fields->>'email' like ?", email)
           .where("contact_type = ?", type)
     end
@@ -142,7 +141,7 @@ namespace :contacts do
     start = Time.now
 
     accounts.each do |account|
-      account.contacts.each do |contact|
+      account.n_contacts.each do |contact|
         contact.delete
       end
     end
@@ -153,7 +152,7 @@ namespace :contacts do
   end
 
   def update_contacts(account)
-    account.contacts.all.each do |contact|
+    account.n_contacts.all.each do |contact|
       contact.contact_type = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].sample
       name = Faker::Name.name
       email = Faker::Internet.email(name)
@@ -162,24 +161,11 @@ namespace :contacts do
     end
   end
 
-
   def create_contact(account)
     type = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].sample
     name = Faker::Name.name
     email = Faker::Internet.email(name)
-
-    #begin
-    account.contacts.create(contact_type: type, fields: {name: name, email: email})
-    # rescue
-    #
-    #   sql = "create table account_#{account.id}_contacts partition of contacts for values from(#{account.id}) to(#{account.id + 1});"
-    #   ActiveRecord::Base.connection.execute(sql)
-    #   sql = "create index account_#{account.id}_contacts_id on account_#{account.id}_contacts(id);"
-    #   ActiveRecord::Base.connection.execute(sql)
-    #   create_contact(account)
-    #
-    # end
-
+    account.n_contacts.create(contact_type: type, fields: {name: name, email: email})
   end
 
 end
